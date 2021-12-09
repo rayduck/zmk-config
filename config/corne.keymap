@@ -66,7 +66,7 @@
 //                   | CMD |_SYB_| SPC | | RET |-NXT-| ALT |
                         bindings = <
    &none &kp DEL  &kp BSLH &kp PRCNT &kp DLLR  &none &none &kp CARET &kp LBRC &kp RBRC &kp BSPC  &none
-   &none &kp HASH &kp LPAR &kp RPAR  &kp COLON &none &none &kp DQT   &kp RBKT &kp LBRC &kp SEMI  &none
+   &none &kp HASH &kp LPAR &kp RPAR  &kp COLON &none &none &kp DQT   &kp LBKT &kp RBKT &kp SEMI  &none
    &none &kp ESC  &kp AT   &kp EXCL  &kp AMPS  &none &none &kp GRAVE &kp LT   &kp GT   &kp QMARK &none
                              &trans &trans &kp SPACE &kp RET &trans &sk RALT
                         >;
