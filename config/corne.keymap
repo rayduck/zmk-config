@@ -9,12 +9,13 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/ext_power.h>
  
 #define CMK 0
 #define SYB 1
 #define NUM 2
-#define NAV 3
-#define CFG 4
+#define CFG 3
+#define NAV 4
 
 &caps_word {
    continue-list = <UNDERSCORE MINUS>;
@@ -26,7 +27,7 @@
         combo_wq_esc {
             timeout-ms = <50>;
             key-positions = <1 2>;
-            bindings = <&kp TAB>;
+            bindings = <&kp ESC>;
         };
         combo_spaces_tab {
             timeout-ms = <50>;
@@ -37,6 +38,21 @@
             timeout-ms = <50>;
             key-positions = <17 18>;
             bindings = <&kp CAPS>;
+        };
+        combo_zx_control {
+            timeout-ms = <50>;
+            key-positions = <25 26>;
+            bindings = <&sk LCTL>;
+        };
+    };
+};
+
+/ {
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        tri_layer {
+            if-layers = <1 2>;
+            then-layer = <3>;
         };
     };
 };
@@ -49,52 +65,65 @@
 // ---------------------------------------------------------------------------
 // |     |  Q  |  W  |  F  |  P  |  B  | |  J  |  L  |  U  |  Y  |BKSPC|     |
 // |     |  A  |  R  |  S  |  T  |  G  | |  M  |  N  |  E  |  I  |  O  |     |
-// |     |  Z  |  X  |  C  |  D  |  V  | |  K  |  H  |  ,  |  .  | NAV |     |
-//                   | CMD |-SYB-| SPC | | RET |—NUM-| SFT |
+// |     |  Z  |  X  |  C  |  D  |  V  | |  K  |  H  |  ,  |  .  | SFT |     |
+//                   | CMD |-SYB-| SPC | | RET |—NUM-| ALT |
                         bindings = <
    &none &kp Q &kp W &kp F &kp P &kp B &kp J &kp L   &kp U     &kp Y   &kp BSPC  &none
    &none &kp A &kp R &kp S &kp T &kp G &kp M &kp N   &kp E     &kp I   &kp O     &none
-   &none &kp Z &kp X &kp C &kp D &kp V &kp K &kp H   &kp COMMA &kp DOT &mo NAV &none
-            &kp LCMD &mo SYB &kp SPACE &kp RET &mo NUM &kp RSHFT
+   &none &kp Z &kp X &kp C &kp D &kp V &kp K &kp H   &kp COMMA &kp DOT &kp RSHFT &none
+            &kp LCMD &mo SYB &kp SPACE &kp RET &mo NUM &kp RALT
                         >;
                 };
                 symbol_layer {
 // ---------------------------------------------------------------------------
-// |     | DEL |  \  |  %  |  $  |  £  | |     |  ^  |  {  |  }  |BKSPC|     |
+// |     | TAB |  \  |  %  |  $  |     | |     |  ^  |  {  |  }  |BKSPC|     |
 // |     |  #  |  (  |  )  |  :  |     | |     |  "  |  [  |  ]  |  ;  |     |
-// |     | ESC |  @  |  !  |  &  |     | |     |  `  |  <  |  >  |  ?  |     |
+// |     |  ?  |  @  |  !  |  &  |     | |     |  `  |  <  |  >  | SFT |     |
 //                   | CMD |_SYB_| SPC | | RET |-NXT-| ALT |
                         bindings = <
-   &none &kp DEL  &kp BSLH &kp PRCNT &kp DLLR  &none &none &kp CARET &kp LBRC &kp RBRC &kp BSPC  &none
+   &none &kp TAB  &kp BSLH &kp PRCNT &kp DLLR  &none &none &kp CARET &kp LBRC &kp RBRC &kp BSPC  &none
    &none &kp HASH &kp LPAR &kp RPAR  &kp COLON &none &none &kp DQT   &kp LBKT &kp RBKT &kp SEMI  &none
-   &none &kp ESC  &kp AT   &kp EXCL  &kp AMPS  &none &none &kp GRAVE &kp LT   &kp GT   &kp QMARK &none
-                             &trans &trans &kp SPACE &kp RET &trans &sk RALT
+   &none &kp QMARK  &kp AT   &kp EXCL  &kp AMPS  &none &none &kp GRAVE &kp LT   &kp GT   &kp RSFT &none
+                             &trans &trans &kp SPACE &kp RET &trans &trans
                         >;
                 };
                 number_layer {
 // ---------------------------------------------------------------------------
-// |     |     |  6  |  5  |  4  |     | |     |  *  |  -  |  /  |BKSPC|     |
+// |     |  ~  |  6  |  5  |  4  |     | |     |  *  |  -  |  /  | DEL |     |
 // |     |  3  |  2  |  1  |  0  |     | |     |  '  |  _  |  =  |  +  |     |
-// |     |     |  9  |  8  |  7  |     | |     |  |  |  ,  |  .  |  ~  |     |
-//                   | CTL |-NXT-| SPC | | RET |_NUM_| SFT |
+// |     | SFT |  9  |  8  |  7  |     | |     |  |  |  ,  |  .  |-NAV-|     |
+//                   | CMD |-NXT-| SPC | | RET |_NUM_| ALT |
                         bindings = <
-   &none &none  &kp N6 &kp N5 &kp N4 &none &none &kp STAR &kp MINUS &kp FSLH  &kp BSPC  &none
+   &none &kp TILDE  &kp N6 &kp N5 &kp N4 &none &none &kp STAR &kp MINUS &kp FSLH  &kp DEL &none
    &none &kp N3 &kp N2 &kp N1 &kp N0 &none &none &kp SQT  &kp UNDER &kp EQUAL &kp PLUS  &none 
-   &none &none  &kp N9 &kp N8 &kp N7 &none &none &kp PIPE &trans    &trans    &kp TILDE &none
-                 &sk LCTL &trans &kp SPACE &kp RET  &trans    &trans
+   &none &none  &kp N9 &kp N8 &kp N7 &none &none &kp PIPE &trans    &trans    &mo NAV &none
+                 &trans &trans &kp SPACE &kp RET  &trans    &trans
+                        >;
+                };
+                config_layer {
+// ---------------------------------------------------------------------------
+// |     | ESC | F 6 | F 5 | F 4 | BLE | | BT0 | BT1 | USB |VMUTE| DEL |     |
+// |     | F 3 | F 2 | F 1 | F10 | F11 | | BT2 |BRIDN|BRIUP|VOLDN|VOLUP|     |
+// |     | CTL | F 9 | F 8 | F 7 | F12 | |BTCLR|EPOFF|EP_ON|     | SFT |
+//                   | CMD |_NXT_| SPC | | RET |_NUM_| ALT |
+                        bindings = <
+   &none &kp ESC  &kp F6 &kp F5 &kp F4  &out OUT_BLE &bt BT_SEL 0 &bt BT_SEL 1 &out OUT_USB &kp K_MUTE   &kp DEL &none 
+   &none &kp F3   &kp F2 &kp F1 &kp F10 &kp F11      &bt BT_SEL 2 &kp C_BRI_DN &kp C_BRI_UP &kp C_VOL_DN &kp C_VOL_UP  &none 
+   &none &kp LCTL &kp F9 &kp F8 &kp F7  &kp F12      &bt BT_CLR   &none &ext_power EP_OFF &ext_power EP_ON &trans &none &none 
+                         &trans &trans &trans &trans &trans &trans 
                         >;
                 };
                 nav_layer {
 // ---------------------------------------------------------------------------
-// |     |BTCLR| F 6 | F 5 | F 4 | BLE | | USB |BRIDN|BRIUP|VOLDN|VOLUP|     |
-// |     | F 3 | F 2 | F 1 | F10 | F11 | |left |down | up  |right|VMUTE|     |
-// |     | CAP | F 9 | F 8 | F 7 | F12 | | END |PG_DN|PG_UP| HOM |_NAV_|     |
-//                   | CTL | BT0 | BT1 | | BT2 | BT3 | ALT |
+// |     |     |     |     |     |     | |     |     |     |     |     |     |
+// |     |     |     |     |     |     | | LFT | DWN | U P |RIGHT|     |     |
+// |     |CAPWD|     |     |     |     | | END |PG_DN|PG_UP| HOM |_NAV_|     |
+//                   | CMD |-NXT-| SPC | | RET |_NUM_| ALT |
                         bindings = <
-   &none &none      &kp F6 &kp F5 &kp F4  &out OUT_BLE &out OUT_USB &kp C_BRI_DN &kp C_BRI_UP &kp C_VOL_DN &kp C_VOL_UP &none 
-   &none &kp F3     &kp F2 &kp F1 &kp F10 &kp F11      &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &kp K_MUTE   &none 
-   &none &caps_word &kp F9 &kp F8 &kp F7  &kp F12      &kp END      &kp PG_DN    &kp PG_UP    &kp HOME     &trans       &none 
-                         &sk LCTL &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &sk RALT
+   &none &none      &none &none &none &none &none    &none     &none     &none     &none  &none 
+   &none &none      &none &none &none &none &kp LEFT &kp DOWN  &kp UP    &kp RIGHT &none  &none 
+   &none &caps_word &none &none &none &none &kp END  &kp PG_DN &kp PG_UP &kp HOME  &trans &none 
+                         &trans &trans &trans &trans &trans &trans
                         >;
                 };
         };
