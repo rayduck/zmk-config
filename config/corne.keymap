@@ -29,15 +29,20 @@
             key-positions = <1 2>;
             bindings = <&kp ESC>;
         };
-        combo_spaces_tab {
-            timeout-ms = <50>;
+        combo_spaces_escape{
+            timeout-ms = <100>;
             key-positions = <38 39>;
             bindings = <&kp ESC>;
         };
         combo_mid_caps {
-            timeout-ms = <50>;
+            timeout-ms = <100>;
             key-positions = <17 18>;
             bindings = <&kp CAPS>;
+        };
+        combo_caps_word {
+            timeout-ms = <100>;
+            key-positions = <25 34>;
+            bindings = <&caps_word>;
         };
         combo_zx_control {
             timeout-ms = <50>;
@@ -76,12 +81,12 @@
                 };
                 symbol_layer {
 // ---------------------------------------------------------------------------
-// |     | TAB |  \  |  %  |  $  |     | |     |  ^  |  {  |  }  |BKSPC|     |
+// |     | TAB |  \  |  %  |  $  |     | |     |  ^  |  {  |  }  | DEL |     |
 // |     |  #  |  (  |  )  |  :  |     | |     |  "  |  [  |  ]  |  ;  |     |
 // |     |  ?  |  @  |  !  |  &  |     | |     |  `  |  <  |  >  | SFT |     |
 //                   | CMD |_SYB_| SPC | | RET |-NXT-| ALT |
                         bindings = <
-   &none &kp TAB  &kp BSLH &kp PRCNT &kp DLLR  &none &none &kp CARET &kp LBRC &kp RBRC &kp BSPC  &none
+   &none &kp TAB  &kp BSLH &kp PRCNT &kp DLLR  &none &none &kp CARET &kp LBRC &kp RBRC &kp DEL  &none
    &none &kp HASH &kp LPAR &kp RPAR  &kp COLON &none &none &kp DQT   &kp LBKT &kp RBKT &kp SEMI  &none
    &none &kp QMARK  &kp AT   &kp EXCL  &kp AMPS  &none &none &kp GRAVE &kp LT   &kp GT   &kp RSFT &none
                              &trans &trans &kp SPACE &kp RET &trans &trans
@@ -89,12 +94,12 @@
                 };
                 number_layer {
 // ---------------------------------------------------------------------------
-// |     |  ~  |  6  |  5  |  4  |     | |     |  *  |  -  |  /  | DEL |     |
+// |     |  ~  |  6  |  5  |  4  |     | |     |  *  |  -  |  /  | ESC |     |
 // |     |  3  |  2  |  1  |  0  |     | |     |  '  |  _  |  =  |  +  |     |
 // |     | SFT |  9  |  8  |  7  |     | |     |  |  |  ,  |  .  |-NAV-|     |
 //                   | CMD |-NXT-| SPC | | RET |_NUM_| ALT |
                         bindings = <
-   &none &kp TILDE  &kp N6 &kp N5 &kp N4 &none &none &kp STAR &kp MINUS &kp FSLH  &kp DEL &none
+   &none &kp TILDE  &kp N6 &kp N5 &kp N4 &none &none &kp STAR &kp MINUS &kp FSLH  &kp ESC &none
    &none &kp N3 &kp N2 &kp N1 &kp N0 &none &none &kp SQT  &kp UNDER &kp EQUAL &kp PLUS  &none 
    &none &none  &kp N9 &kp N8 &kp N7 &none &none &kp PIPE &trans    &trans    &mo NAV &none
                  &trans &trans &kp SPACE &kp RET  &trans    &trans
@@ -117,7 +122,7 @@
 // ---------------------------------------------------------------------------
 // |     |     |     |     |     |     | |     |     |     |     |     |     |
 // |     |     |     |     |     |     | | LFT | DWN | U P |RIGHT|     |     |
-// |     |CAPWD|     |     |     |     | | END |PG_DN|PG_UP| HOM |_NAV_|     |
+// |     |     |     |     |     |     | | END |PG_DN|PG_UP| HOM |_NAV_|     |
 //                   | CMD |-NXT-| SPC | | RET |_NUM_| ALT |
                         bindings = <
    &none &none      &none &none &none &none &none    &none     &none     &none     &none  &none 
