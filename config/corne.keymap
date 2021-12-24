@@ -71,7 +71,7 @@
 // |     |  Q  |  W  |  F  |  P  |  B  | |  J  |  L  |  U  |  Y  |BKSPC|     |
 // |     |  A  |  R  |  S  |  T  |  G  | |  M  |  N  |  E  |  I  |  O  |     |
 // |     |  Z  |  X  |  C  |  D  |  V  | |  K  |  H  |  ,  |  .  | SFT |     |
-//                   | CMD |-SYB-| SPC | | RET |—NUM-| ALT |
+//                   | CMD |-SYB-| SPC | | RET |—NUM-| OPT |
                         bindings = <
    &none &kp Q &kp W &kp F &kp P &kp B &kp J &kp L   &kp U     &kp Y   &kp BSPC  &none
    &none &kp A &kp R &kp S &kp T &kp G &kp M &kp N   &kp E     &kp I   &kp O     &none
@@ -81,12 +81,12 @@
                 };
                 symbol_layer {
 // ---------------------------------------------------------------------------
-// |     | TAB |  \  |  %  |  $  |     | |     |  ^  |  {  |  }  | DEL |     |
+// |     | ESC |  \  |  %  |  $  |     | |     |  ^  |  {  |  }  | DEL |     |
 // |     |  #  |  (  |  )  |  :  |     | |     |  "  |  [  |  ]  |  ;  |     |
 // |     |  ?  |  @  |  !  |  &  |     | |     |  `  |  <  |  >  | SFT |     |
-//                   | CMD |_SYB_| SPC | | RET |-NXT-| ALT |
+//                   | CMD |_SYB_| SPACE | | RET |-NXT-| OPT |
                         bindings = <
-   &none &kp TAB  &kp BSLH &kp PRCNT &kp DLLR  &none &none &kp CARET &kp LBRC &kp RBRC &kp DEL  &none
+   &none &kp ESC  &kp BSLH &kp PRCNT &kp DLLR  &none &none &kp CARET &kp LBRC &kp RBRC &kp DEL  &none
    &none &kp HASH &kp LPAR &kp RPAR  &kp COLON &none &none &kp DQT   &kp LBKT &kp RBKT &kp SEMI  &none
    &none &kp QMARK  &kp AT   &kp EXCL  &kp AMPS  &none &none &kp GRAVE &kp LT   &kp GT   &kp RSFT &none
                              &trans &trans &kp SPACE &kp RET &trans &trans
@@ -94,12 +94,12 @@
                 };
                 number_layer {
 // ---------------------------------------------------------------------------
-// |     |  ~  |  6  |  5  |  4  |     | |     |  *  |  -  |  /  | ESC |     |
+// |     |  ~  |  6  |  5  |  4  |     | |     |  *  |  -  |  /  | DEL |     |
 // |     |  3  |  2  |  1  |  0  |     | |     |  '  |  _  |  =  |  +  |     |
 // |     | SFT |  9  |  8  |  7  |     | |     |  |  |  ,  |  .  |-NAV-|     |
-//                   | CMD |-NXT-| SPC | | RET |_NUM_| ALT |
+//                   | CMD |-NXT-| SPC | | RET |_NUM_| OPT |
                         bindings = <
-   &none &kp TILDE  &kp N6 &kp N5 &kp N4 &none &none &kp STAR &kp MINUS &kp FSLH  &kp ESC &none
+   &none &kp TILDE  &kp N6 &kp N5 &kp N4 &none &none &kp STAR &kp MINUS &kp FSLH  &kp DEL &none
    &none &kp N3 &kp N2 &kp N1 &kp N0 &none &none &kp SQT  &kp UNDER &kp EQUAL &kp PLUS  &none 
    &none &none  &kp N9 &kp N8 &kp N7 &none &none &kp PIPE &trans    &trans    &mo NAV &none
                  &trans &trans &kp SPACE &kp RET  &trans    &trans
@@ -110,7 +110,7 @@
 // |     | ESC | F 6 | F 5 | F 4 | BLE | | BT0 | BT1 | USB |VMUTE| DEL |     |
 // |     | F 3 | F 2 | F 1 | F10 | F11 | | BT2 |BRIDN|BRIUP|VOLDN|VOLUP|     |
 // |     | CTL | F 9 | F 8 | F 7 | F12 | |BTCLR|EPOFF|EP_ON|     | SFT |
-//                   | CMD |_NXT_| SPC | | RET |_NUM_| ALT |
+//                   | CMD |_NXT_| SPC | | RET |_NUM_| OPT |
                         bindings = <
    &none &kp ESC  &kp F6 &kp F5 &kp F4  &out OUT_BLE &bt BT_SEL 0 &bt BT_SEL 1 &out OUT_USB &kp K_MUTE   &kp DEL &none 
    &none &kp F3   &kp F2 &kp F1 &kp F10 &kp F11      &bt BT_SEL 2 &kp C_BRI_DN &kp C_BRI_UP &kp C_VOL_DN &kp C_VOL_UP  &none 
@@ -122,12 +122,12 @@
 // ---------------------------------------------------------------------------
 // |     |     |     |     |     |     | |     |     |     |     |     |     |
 // |     |     |     |     |     |     | | LFT | DWN | U P |RIGHT|     |     |
-// |     |     |     |     |     |     | | END |PG_DN|PG_UP| HOM |_NAV_|     |
-//                   | CMD |-NXT-| SPC | | RET |_NUM_| ALT |
+// |     | SFT |     |     |     |     | | END |PG_DN|PG_UP| HOM |_NAV_|     |
+//                   | CMD |-NXT-| SPC | | RET |_NUM_| OPT |
                         bindings = <
    &none &none      &none &none &none &none &none    &none     &none     &none     &none  &none 
    &none &none      &none &none &none &none &kp LEFT &kp DOWN  &kp UP    &kp RIGHT &none  &none 
-   &none &caps_word &none &none &none &none &kp END  &kp PG_DN &kp PG_UP &kp HOME  &trans &none 
+   &none &kp LSFT &none &none &none &none &kp END  &kp PG_DN &kp PG_UP &kp HOME  &trans &none 
                          &trans &trans &trans &trans &trans &trans
                         >;
                 };
