@@ -16,6 +16,7 @@
 #define NUM 2
 #define CFG 3
 #define NAV 4
+#define LOK 5
 
 &caps_word {
    continue-list = <UNDERSCORE MINUS>;
@@ -26,28 +27,32 @@
         compatible = "zmk,combos";
         combo_wq_esc {
             timeout-ms = <50>;
+            // Q + W
             key-positions = <1 2>;
             bindings = <&kp ESC>;
         };
         combo_spaces_escape{
             timeout-ms = <100>;
+            // SPC + RET
             key-positions = <38 39>;
             bindings = <&kp ESC>;
         };
-        combo_mid_caps {
+        combo_mid_capsword {
             timeout-ms = <100>;
+            // G + M
             key-positions = <17 18>;
-            bindings = <&kp CAPS>;
-        };
-        combo_caps_word {
-            timeout-ms = <100>;
-            key-positions = <25 34>;
             bindings = <&caps_word>;
         };
         combo_zx_control {
             timeout-ms = <50>;
+            // Z + X
             key-positions = <25 26>;
             bindings = <&sk LCTL>;
+        };
+        combo_unlock {
+            timeout-ms = <100>;
+            key-positions = <2 /* Q */ 37 /* SYB */ 40 /* NUM */>;
+            bindings = <&tog LOK>;
         };
     };
 };
@@ -56,6 +61,7 @@
     conditional_layers {
         compatible = "zmk,conditional-layers";
         tri_layer {
+            // SYM + NUM = CFG
             if-layers = <1 2>;
             then-layer = <3>;
         };
@@ -84,7 +90,7 @@
 // |     | ESC |  \  |  %  |  $  |     | |     |  ^  |  {  |  }  | DEL |     |
 // |     |  #  |  (  |  )  |  :  |     | |     |  "  |  [  |  ]  |  ;  |     |
 // |     |  ?  |  @  |  !  |  &  |     | |     |  `  |  <  |  >  | SFT |     |
-//                   | CMD |_SYB_| SPACE | | RET |-NXT-| OPT |
+//                   | CMD |_SYB_| SPACE | | RET |-CFG-| OPT |
                         bindings = <
    &none &kp ESC  &kp BSLH &kp PRCNT &kp DLLR  &none &none &kp CARET &kp LBRC &kp RBRC &kp DEL  &none
    &none &kp HASH &kp LPAR &kp RPAR  &kp COLON &none &none &kp DQT   &kp LBKT &kp RBKT &kp SEMI  &none
@@ -97,7 +103,7 @@
 // |     |  ~  |  6  |  5  |  4  |     | |     |  *  |  -  |  /  | DEL |     |
 // |     |  3  |  2  |  1  |  0  |     | |     |  '  |  _  |  =  |  +  |     |
 // |     | SFT |  9  |  8  |  7  |     | |     |  |  |  ,  |  .  |-NAV-|     |
-//                   | CMD |-NXT-| SPC | | RET |_NUM_| OPT |
+//                   | CMD |-CFG-| SPC | | RET |_NUM_| OPT |
                         bindings = <
    &none &kp TILDE  &kp N6 &kp N5 &kp N4 &none &none &kp STAR &kp MINUS &kp FSLH  &kp DEL &none
    &none &kp N3 &kp N2 &kp N1 &kp N0 &none &none &kp SQT  &kp UNDER &kp EQUAL &kp PLUS  &none 
@@ -107,12 +113,12 @@
                 };
                 config_layer {
 // ---------------------------------------------------------------------------
-// |     | ESC | F 6 | F 5 | F 4 | BLE | | BT0 | BT1 | USB |VMUTE| DEL |     |
+// |     | LCK | F 6 | F 5 | F 4 | BLE | | BT0 | BT1 | USB |VMUTE|RESET|     |
 // |     | F 3 | F 2 | F 1 | F10 | F11 | | BT2 |BRIDN|BRIUP|VOLDN|VOLUP|     |
 // |     | CTL | F 9 | F 8 | F 7 | F12 | |BTCLR|EPOFF|EP_ON|     | SFT |
-//                   | CMD |_NXT_| SPC | | RET |_NUM_| OPT |
+//                   | CMD |_CFG_| SPC | | RET |_CFG_| OPT |
                         bindings = <
-   &none &kp ESC  &kp F6 &kp F5 &kp F4  &out OUT_BLE &bt BT_SEL 0 &bt BT_SEL 1 &out OUT_USB &kp K_MUTE   &kp DEL &none 
+   &none &to LOK  &kp F6 &kp F5 &kp F4  &out OUT_BLE &bt BT_SEL 0 &bt BT_SEL 1 &out OUT_USB &kp K_MUTE   &reset &none 
    &none &kp F3   &kp F2 &kp F1 &kp F10 &kp F11      &bt BT_SEL 2 &kp C_BRI_DN &kp C_BRI_UP &kp C_VOL_DN &kp C_VOL_UP  &none 
    &none &kp LCTL &kp F9 &kp F8 &kp F7  &kp F12      &bt BT_CLR   &none &ext_power EP_OFF &ext_power EP_ON &trans &none &none 
                          &trans &trans &trans &trans &trans &trans 
@@ -122,14 +128,23 @@
 // ---------------------------------------------------------------------------
 // |     |     |     |     |     |     | |     |     |     |     |     |     |
 // |     |     |     |     |     |     | | LFT | DWN | U P |RIGHT|     |     |
-// |     | SFT |     |     |     |     | | END |PG_DN|PG_UP| HOM |_NAV_|     |
-//                   | CMD |-NXT-| SPC | | RET |_NUM_| OPT |
+// |     | SFT |     |     |     |     | | HOM |PG_DN|PG_UP| END |_NAV_|     |
+//                   | CMD |-CFG-| SPC | | RET |_NUM_| OPT |
                         bindings = <
    &none &none      &none &none &none &none &none    &none     &none     &none     &none  &none 
    &none &none      &none &none &none &none &kp LEFT &kp DOWN  &kp UP    &kp RIGHT &none  &none 
-   &none &kp LSFT &none &none &none &none &kp END  &kp PG_DN &kp PG_UP &kp HOME  &trans &none 
+   &none &kp LSFT &none &none &none &none &kp HOME &kp PG_DN &kp PG_UP &kp END   &trans &none 
                          &trans &trans &trans &trans &trans &trans
                         >;
                 };
+                lock_layer {
+                    // only way out is the combo Q + SYB + NUM!
+                    bindings = <
+&none &none &none &none &none &none &none &none &none &none &none &none 
+&none &none &none &none &none &none &none &none &none &none &none &none 
+&none &none &none &none &none &none &none &none &none &none &none &none 
+&none &none &none &none &none &none 
+                    >;
+                }
         };
 };
