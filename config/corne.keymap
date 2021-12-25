@@ -51,7 +51,7 @@
         };
         combo_unlock {
             timeout-ms = <100>;
-            key-positions = <2 /* Q */ 37 /* SYB */ 40 /* NUM */>;
+            key-positions = <1 /* Q */ 37 /* SYB */ 40 /* NUM */>;
             bindings = <&tog LOK>;
         };
     };
