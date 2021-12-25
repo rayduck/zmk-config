@@ -25,11 +25,11 @@
 / {
     combos {
         compatible = "zmk,combos";
-        combo_wq_esc {
+        combo_wq_tab {
             timeout-ms = <50>;
             // Q + W
             key-positions = <1 2>;
-            bindings = <&kp ESC>;
+            bindings = <&kp TAB>;
         };
         combo_spaces_escape{
             timeout-ms = <100>;
