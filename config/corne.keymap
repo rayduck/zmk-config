@@ -28,8 +28,8 @@
         combo_wq_tab {
             layers = <0 1 2 3 4>;
             timeout-ms = <50>;
-            // Q + W
-            key-positions = <1 2>;
+            // W + F
+            key-positions = <2 3>;
             bindings = <&kp TAB>;
         };
         combo_spaces_escape{
@@ -50,7 +50,7 @@
             layers = <0 1 2 3 4>;
             timeout-ms = <100>;
             // Z + X
-            key-positions = <25 26>;
+            key-positions = <26 27>;
             bindings = <&sk LCTL>;
         };
         combo_unlock {
@@ -143,6 +143,7 @@
                 };
                 lock_layer {
                     // only way out is the combo Q + SYM + NUM!
+                    // other combos are disabled too
                     bindings = <
 &none &none &none &none &none &none &none &none &none &none &none &none 
 &none &none &none &none &none &none &none &none &none &none &none &none 
