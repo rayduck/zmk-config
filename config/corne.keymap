@@ -19,7 +19,7 @@
 #define LCK 5
 
 &caps_word {
-   continue-list = <UNDERSCORE MINUS>;
+   continue-list = <UNDERSCORE MINUS BACKSPACE>;
 };
 
 / {
@@ -75,26 +75,26 @@
                 symbol_layer {
 // ---------------------------------------------------------------------------
 // |     | BSP |  \  |  %  |  $  |     | |     |  ^  |  {  |  }  | DEL |     |
-// |     |  *  |  (  |  )  |  :  |     | |     |  "  |  [  |  ]  |  O  |     |
-// |     |-FUN-|  !  |  @  |  &  |     | |     |  `  |  <  |  >  | SFT |     |
+// |     |  *  |  (  |  )  |  :  |     | |     |  '  |  [  |  ]  |  O  |     |
+// |     |-FUN-|  !  |  @  |  &  |     | |     |  #  |  <  |  >  | SFT |     |
 //                   | CMD |_SYM_| SPACE | | RET | ESC | OPT |
                         bindings = <
    &none &kp BSPC  &kp BSLH &kp PRCNT &kp DLLR  &none &none &kp CARET &kp LBRC &kp RBRC &kp DEL  &none
-   &none &kp STAR &kp LPAR &kp RPAR  &kp COLON &none &none &kp DQT   &kp LBKT &kp RBKT &kp LS(O)  &none
-   &none &to FUN  &kp EXCL   &kp AT  &kp AMPS  &none &none &kp GRAVE &kp LT   &kp GT   &kp RSFT &none
+   &none &kp STAR &kp LPAR &kp RPAR  &kp COLON &none &none &kp SQT   &kp LBKT &kp RBKT &kp LS(O)  &none
+   &none &to FUN  &kp EXCL   &kp AT  &kp AMPS  &none &none &kp HASH &kp LT   &kp GT   &kp RSFT &none
                              &trans &trans &kp SPACE &kp RET &kp ESC &trans
                         >;
                 };
                 number_layer {
 // ---------------------------------------------------------------------------
 // |     | BSP |  6  |  5  |  4  |     | |     |  |  |  -  |  /  |  ~  |     |
-// |     |  .  |  3  |  2  |  1  |     | |     |  '  |  _  |  =  |  +  |     |
-// |     | SFT |  9  |  8  |  7  |     | |     |  #  |  ;  |  ?  |-NAV-|     |
+// |     |  .  |  3  |  2  |  1  |     | |     |  "  |  _  |  =  |  +  |     |
+// |     | SFT |  9  |  8  |  7  |     | |     |  `  |  ;  |  ?  |-NAV-|     |
 //                   | CMD |  0  | SPC | | RET |_NUM_| OPT |
                         bindings = <
    &none &kp BSPC  &kp N6 &kp N5 &kp N4 &none &none &kp PIPE &kp MINUS &kp FSLH  &kp TILDE &none
-   &none &kp DOT &kp N3 &kp N2 &kp N1 &none &none &kp SQT  &kp UNDER &kp EQUAL &kp PLUS  &none 
-   &none &kp LSFT  &kp N9 &kp N8 &kp N7 &none &none &kp HASH &kp SEMI  &kp QMARK    &mo NAV &none
+   &none &kp DOT &kp N3 &kp N2 &kp N1 &none &none &kp DQT  &kp UNDER &kp EQUAL &kp PLUS  &none 
+   &none &kp LSFT  &kp N9 &kp N8 &kp N7 &none &none &kp GRAVE &kp SEMI  &kp QMARK    &mo NAV &none
                  &trans &kp N0 &kp SPACE &kp RET  &trans    &trans
                         >;
                 };
