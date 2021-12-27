@@ -14,9 +14,9 @@
 #define CMK 0
 #define SYM 1
 #define NUM 2
-#define CFG 3
+#define FUN 3
 #define NAV 4
-#define LOK 5
+#define LCK 5
 
 &caps_word {
    continue-list = <UNDERSCORE MINUS>;
@@ -32,13 +32,6 @@
             key-positions = <2 3>;
             bindings = <&kp TAB>;
         };
-        combo_spaces_escape{
-            layers = <0 1 2 3 4>;
-            timeout-ms = <100>;
-            // SPC + RET
-            key-positions = <38 39>;
-            bindings = <&kp ESC>;
-        };
         combo_mid_capsword {
             layers = <0 1 2 3 4>;
             timeout-ms = <100>;
@@ -46,7 +39,7 @@
             key-positions = <17 18>;
             bindings = <&caps_word>;
         };
-        combo_zx_control {
+        combo_xc_ctrl {
             layers = <0 1 2 3 4>;
             timeout-ms = <100>;
             // Z + X
@@ -55,8 +48,9 @@
         };
         combo_unlock {
             timeout-ms = <100>;
-            key-positions = <1 /* Q */ 37 /* SYM */ 40 /* NUM */>;
-            bindings = <&tog LOK>;
+            // (Z + SYM) + NAV (NUM + SFT)
+            key-positions = <25 34 37 40>;
+            bindings = <&tog LCK>;
         };
     };
 };
@@ -65,7 +59,7 @@
     conditional_layers {
         compatible = "zmk,conditional-layers";
         tri_layer {
-            // SYM + NUM = CFG
+            // SYM + NUM = FUN
             if-layers = <1 2>;
             then-layer = <3>;
         };
@@ -81,7 +75,7 @@
 // |     |  Q  |  W  |  F  |  P  |  B  | |  J  |  L  |  U  |  Y  |BKSPC|     |
 // |     |  A  |  R  |  S  |  T  |  G  | |  M  |  N  |  E  |  I  |  O  |     |
 // |     |  Z  |  X  |  C  |  D  |  V  | |  K  |  H  |  ,  |  .  | SFT |     |
-//                   | CMD |-SYM-| SPC | | RET |—NUM-| OPT |
+//                   | CMD |-SYM-| SPC | | RET |-NUM-| OPT |
                         bindings = <
    &none &kp Q &kp W &kp F &kp P &kp B &kp J &kp L   &kp U     &kp Y   &kp BSPC  &none
    &none &kp A &kp R &kp S &kp T &kp G &kp M &kp N   &kp E     &kp I   &kp O     &none
@@ -91,58 +85,58 @@
                 };
                 symbol_layer {
 // ---------------------------------------------------------------------------
-// |     | ESC |  \  |  %  |  $  |     | |     |  ^  |  {  |  }  | DEL |     |
-// |     |  #  |  (  |  )  |  :  |     | |     |  "  |  [  |  ]  |  O  |     |
-// |     |  ?  |  @  |  !  |  &  |     | |     |  `  |  <  |  >  | SFT |     |
-//                   | CMD |_SYM_| SPACE | | RET |-CFG-| OPT |
+// |     | BSP |  \  |  %  |  $  |     | |     |  ^  |  {  |  }  | DEL |     |
+// |     |  *  |  (  |  )  |  :  |     | |     |  "  |  [  |  ]  |  O  |     |
+// |     |-FUN-|  !  |  @  |  &  |     | |     |  `  |  <  |  >  | SFT |     |
+//                   | CMD |_SYM_| SPACE | | RET | ESC | OPT |
                         bindings = <
-   &none &kp ESC  &kp BSLH &kp PRCNT &kp DLLR  &none &none &kp CARET &kp LBRC &kp RBRC &kp DEL  &none
-   &none &kp HASH &kp LPAR &kp RPAR  &kp COLON &none &none &kp DQT   &kp LBKT &kp RBKT &kp LS(O)  &none
-   &none &kp QMARK  &kp AT   &kp EXCL  &kp AMPS  &none &none &kp GRAVE &kp LT   &kp GT   &kp RSFT &none
-                             &trans &trans &kp SPACE &kp RET &trans &trans
+   &none &kp BSPC  &kp BSLH &kp PRCNT &kp DLLR  &none &none &kp CARET &kp LBRC &kp RBRC &kp DEL  &none
+   &none &kp STAR &kp LPAR &kp RPAR  &kp COLON &none &none &kp DQT   &kp LBKT &kp RBKT &kp LS(O)  &none
+   &none &to FUN  &kp EXCL   &kp AT  &kp AMPS  &none &none &kp GRAVE &kp LT   &kp GT   &kp RSFT &none
+                             &trans &trans &kp SPACE &kp RET &kp ESC &trans
                         >;
                 };
                 number_layer {
 // ---------------------------------------------------------------------------
-// |     |  ~  |  6  |  5  |  4  |     | |     |  *  |  -  |  /  | DEL |     |
-// |     |  3  |  2  |  1  |  0  |     | |     |  '  |  _  |  =  |  +  |     |
-// |     | SFT |  9  |  8  |  7  |     | |     |  |  |  ;  |  .  |-NAV-|     |
-//                   | CMD |-CFG-| SPC | | RET |_NUM_| OPT |
+// |     | BSP |  6  |  5  |  4  |     | |     |  |  |  -  |  /  |  ~  |     |
+// |     |  .  |  3  |  2  |  1  |     | |     |  '  |  _  |  =  |  +  |     |
+// |     | SFT |  9  |  8  |  7  |     | |     |  #  |  ;  |  ?  |-NAV-|     |
+//                   | CMD |  0  | SPC | | RET |_NUM_| OPT |
                         bindings = <
-   &none &kp TILDE  &kp N6 &kp N5 &kp N4 &none &none &kp STAR &kp MINUS &kp FSLH  &kp DEL &none
-   &none &kp N3 &kp N2 &kp N1 &kp N0 &none &none &kp SQT  &kp UNDER &kp EQUAL &kp PLUS  &none 
-   &none &none  &kp N9 &kp N8 &kp N7 &none &none &kp PIPE &kp SEMI  &trans    &mo NAV &none
-                 &trans &trans &kp SPACE &kp RET  &trans    &trans
+   &none &kp BSPC  &kp N6 &kp N5 &kp N4 &none &none &kp PIPE &kp MINUS &kp FSLH  &kp TILDE &none
+   &none &kb DOT &kp N3 &kp N2 &kp N1 &none &none &kp SQT  &kp UNDER &kp EQUAL &kp PLUS  &none 
+   &none &kp SFT  &kp N9 &kp N8 &kp N7 &none &none &kp HASH &kp SEMI  &kp QMARK    &mo NAV &none
+                 &trans &kp 0 &kp SPACE &kp RET  &trans    &trans
                         >;
                 };
-                config_layer {
+                fun_layer {
 // ---------------------------------------------------------------------------
-// |     | LCK | F 6 | F 5 | F 4 | BLE | | BT0 | BT1 | USB |VMUTE|RESET|     |
-// |     | F 3 | F 2 | F 1 | F10 | F11 | | BT2 |BRIDN|BRIUP|VOLDN|VOLUP|     |
-// |     | CTL | F 9 | F 8 | F 7 | F12 | |BTCLR|EPOFF|EP_ON|CAPSL| SFT |
-//                   | CMD |_CFG_| SPC | | RET |_CFG_| OPT |
+// |     |BTCLR| F 6 | F 5 | F 4 | F10 | | BT0 | BT1 | USB | BLE |POWER|     |
+// |     |RESET| F 3 | F 2 | F 1 | F11 | |VMUTE|VOLDN|VOLUP|BRIDN|BRIUP|     |
+// |     |_FUN_| F 9 | F 8 | F 7 | F12 | | BT2 |EPOFF|EP_ON|CAPSL|<LCK>|
+//                   | CMD |_SYM_| SPC | | RET |     | OPT |
                         bindings = <
-   &none &to LOK  &kp F6 &kp F5 &kp F4  &out OUT_BLE &bt BT_SEL 0 &bt BT_SEL 1 &out OUT_USB &kp K_MUTE   &reset &none 
-   &none &kp F3   &kp F2 &kp F1 &kp F10 &kp F11      &bt BT_SEL 2 &kp C_BRI_DN &kp C_BRI_UP &kp C_VOL_DN &kp C_VOL_UP  &none 
-   &none &kp LCTL &kp F9 &kp F8 &kp F7  &kp F12      &bt BT_CLR   &none &ext_power EP_OFF &ext_power EP_ON &kp CAPS &none &none 
-                         &trans &trans &trans &trans &trans &trans 
+   &none &bt BT_CLR &kp F6 &kp F5 &kp F4 &kp F10  &bt BT_SEL 0 &bt BT_SEL 1 &out OUT_USB &out OUT_BLE &kp C_PWR &none 
+   &none &reset &kp F3   &kp F2 &kp F1 &kp F11      &kp K_MUTE &kp C_VOL_DN &kp C_VOL_UP  &kp C_BRI_DN &kp C_BRI_UP &none 
+   &none &trans &kp F9 &kp F8 &kp F7  &kp F12      &bt BT_SEL 2  &ext_power EP_OFF &ext_power EP_ON &kp CAPS &to LCK   &none 
+                         &trans &trans &trans &trans &none &trans 
                         >;
                 };
                 nav_layer {
 // ---------------------------------------------------------------------------
 // |     |     |     |     |     |     | |     |     |     |     |     |     |
 // |     |     |     |     |     |     | | LFT | DWN | U P |RIGHT|     |     |
-// |     | SFT |     |     |     |     | | HOM |PG_DN|PG_UP| END |_NAV_|     |
-//                   | CMD |-CFG-| SPC | | RET |_NUM_| OPT |
+// |     | LCK |     |     |     |     | | HOM |PG_DN|PG_UP| END |_NAV_|     |
+//                   | CMD |     | SPC | | RET |_NUM_| OPT |
                         bindings = <
    &none &none      &none &none &none &none &none    &none     &none     &none     &none  &none 
    &none &none      &none &none &none &none &kp LEFT &kp DOWN  &kp UP    &kp RIGHT &none  &none 
-   &none &kp LSFT &none &none &none &none &kp HOME &kp PG_DN &kp PG_UP &kp END   &trans &none 
-                         &trans &trans &trans &trans &trans &trans
+   &none &to LCK &none &none &none &none &kp HOME &kp PG_DN &kp PG_UP &kp END   &trans &none 
+                         &trans &none &trans &trans &trans &trans
                         >;
                 };
                 lock_layer {
-                    // only way out is the combo Q + SYM + NUM!
+                    // only way out is the combo Z + SYM + NUM + SFT
                     // other combos are disabled too
                     bindings = <
 &none &none &none &none &none &none &none &none &none &none &none &none 
