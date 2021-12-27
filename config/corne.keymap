@@ -81,7 +81,7 @@
                         bindings = <
    &none &kp BSPC  &kp BSLH &kp PRCNT &kp DLLR  &none &none &kp CARET &kp LBRC &kp RBRC &kp DEL  &none
    &none &kp STAR &kp LPAR &kp RPAR  &kp COLON &none &none &kp SQT   &kp LBKT &kp RBKT &kp LS(O)  &none
-   &none &to FUN  &kp EXCL   &kp AT  &kp AMPS  &none &none &kp HASH &kp LT   &kp GT   &kp RSFT &none
+   &none &mo FUN  &kp EXCL   &kp AT  &kp AMPS  &none &none &kp HASH &kp LT   &kp GT   &kp RSFT &none
                              &trans &trans &kp SPACE &kp RET &kp ESC &trans
                         >;
                 };
