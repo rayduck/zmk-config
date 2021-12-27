@@ -104,7 +104,7 @@
 //                   | CMD |  0  | SPC | | RET |_NUM_| OPT |
                         bindings = <
    &none &kp BSPC  &kp N6 &kp N5 &kp N4 &none &none &kp PIPE &kp MINUS &kp FSLH  &kp TILDE &none
-   &none &kb DOT &kp N3 &kp N2 &kp N1 &none &none &kp SQT  &kp UNDER &kp EQUAL &kp PLUS  &none 
+   &none &kp DOT &kp N3 &kp N2 &kp N1 &none &none &kp SQT  &kp UNDER &kp EQUAL &kp PLUS  &none 
    &none &kp SFT  &kp N9 &kp N8 &kp N7 &none &none &kp HASH &kp SEMI  &kp QMARK    &mo NAV &none
                  &trans &kp 0 &kp SPACE &kp RET  &trans    &trans
                         >;
