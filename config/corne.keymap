@@ -41,16 +41,34 @@
         };
         combo_xc_ctrl {
             layers = <0 1 2 3 4>;
-            timeout-ms = <100>;
+            timeout-ms = <50>;
             // Z + X
             key-positions = <26 27>;
             bindings = <&sk LCTL>;
         };
         combo_unlock {
-            timeout-ms = <100>;
+            timeout-ms = <50>;
             // (Z + SYM) + NAV (NUM + SFT)
             key-positions = <25 34 37 40>;
             bindings = <&tog LCK>;
+        };
+        combo_shift {
+            timeout-ms = <50>;
+            // , + . = shift
+            key-positions = <32 33>;
+            bindings = <&sk RSHFT>;
+        };
+        combo_cmd {
+            timeout-ms = <50>;
+            // SYM + SPC = CMD
+            key-positions = <37 38>;
+            bindings = <&sk LCMD>;
+        };
+        combo_opt {
+            timeout-ms = <50>;
+            // NUM + ENT = OPT
+            key-positions = <39 40>;
+            bindings = <&sk LALT>;
         };
     };
 };
