@@ -25,14 +25,14 @@
 / {
     combos {
         compatible = "zmk,combos";
-        combo_wq_tab {
+        combo_wf_shift {
             layers = <0 1 2 3 4>;
             timeout-ms = <50>;
             // W + F
             key-positions = <2 3>;
-            bindings = <&kp TAB>;
+            bindings = <&sk LSHFT>;
         };
-        combo_mid_capsword {
+        combo_gm_capsword {
             layers = <0 1 2 3 4>;
             timeout-ms = <100>;
             // G + M
@@ -52,11 +52,11 @@
             key-positions = <25 34 37 40>;
             bindings = <&tog LCK>;
         };
-        combo_shift {
+        combo_commadot_tab {
             timeout-ms = <50>;
             // , + . = shift
             key-positions = <32 33>;
-            bindings = <&sk RSHFT>;
+            bindings = <&kp TAB>;
         };
         combo_cmd {
             timeout-ms = <50>;
