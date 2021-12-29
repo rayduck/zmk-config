@@ -23,7 +23,9 @@
    continue-list = <UNDERSCORE MINUS BACKSPACE>;
 };
 
+
 / {
+
   behaviors {
     skq: sticky_key_quick_release {
       compatible = "zmk,behavior-sticky-key";
@@ -33,9 +35,7 @@
       release-after-ms = <1000>;
       quick-release;
     };
-  };
 
-/ {
     combos {
         compatible = "zmk,combos";
         combo_wf_shift {
