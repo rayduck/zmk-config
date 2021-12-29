@@ -87,10 +87,10 @@
             key-positions = <39 40>;
             bindings = <&sk LCMD>;
         };
-        combo_bsp {
+        combo_bspc {
             layers = <0 1 2 3 4 5>;
             timeout-ms = <50>;
-            // SPC + ENT = BSP
+            // SPC + ENT = BSPC
             key-positions = <38 39>;
             bindings = <&kp BSPC>;
         };
@@ -113,12 +113,12 @@
 // ---------------------------------------------------------------------------
 // |     |  Q  |  W  |  F  |  P  |  B  | |  J  |  L  |  U  |  Y  |     |     |
 // |     |  A  |  R  |  S  |  T  |  G  | |  M  |  N  |  E  |  I  |  O  |     |
-// |     |  Z  |  X  |  C  |  D  |  V  | |  K  |  H  |  ,  |  .  | BSP |     |
+// |     |  Z  |  X  |  C  |  D  |  V  | |  K  |  H  |  ,  |  .  |BKSPC|     |
 //                   | OPT |-SYM-| SPC | | RET |-NUM-| CMD |
                         bindings = <
    &none &kp Q &kp W &kp F &kp P &kp B &kp J &kp L   &kp U     &kp Y   &none  &none
    &none &kp A &kp R &kp S &kp T &kp G &kp M &kp N   &kp E     &kp I   &kp O     &none
-   &none &kp Z &kp X &kp C &kp D &kp V &kp K &kp H   &kp COMMA &kp DOT &kp BSP &none
+   &none &kp Z &kp X &kp C &kp D &kp V &kp K &kp H   &kp COMMA &kp DOT &kp BSPC &none
             &kp LALT &mo SYM &kp SPACE &kp RET &mo NUM &kp RCMD
                         >;
                 };
