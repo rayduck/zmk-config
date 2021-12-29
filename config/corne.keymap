@@ -70,6 +70,12 @@
             key-positions = <39 40>;
             bindings = <&sk LALT>;
         };
+        combo_bsp {
+            timeout-ms = <50>;
+            // SPC + ENT = BSP
+            key-positions = <36 37>;
+            bindings = <&kp BSPC>;
+        };
     };
 };
 
@@ -81,12 +87,12 @@
 // ---------------------------------------------------------------------------
 // |     |  Q  |  W  |  F  |  P  |  B  | |  J  |  L  |  U  |  Y  |BKSPC|     |
 // |     |  A  |  R  |  S  |  T  |  G  | |  M  |  N  |  E  |  I  |  O  |     |
-// |     |  Z  |  X  |  C  |  D  |  V  | |  K  |  H  |  ,  |  .  | SFT |     |
+// |     |  Z  |  X  |  C  |  D  |  V  | |  K  |  H  |  ,  |  .  |-NAV-|     |
 //                   | CMD |-SYM-| SPC | | RET |-NUM-| OPT |
                         bindings = <
    &none &kp Q &kp W &kp F &kp P &kp B &kp J &kp L   &kp U     &kp Y   &kp BSPC  &none
    &none &kp A &kp R &kp S &kp T &kp G &kp M &kp N   &kp E     &kp I   &kp O     &none
-   &none &kp Z &kp X &kp C &kp D &kp V &kp K &kp H   &kp COMMA &kp DOT &kp RSHFT &none
+   &none &kp Z &kp X &kp C &kp D &kp V &kp K &kp H   &kp COMMA &kp DOT &mo NAV &none
             &kp LCMD &mo SYM &kp SPACE &kp RET &mo NUM &kp RALT
                         >;
                 };
@@ -94,12 +100,12 @@
 // ---------------------------------------------------------------------------
 // |     | BSP |  \  |  %  |  $  |     | |     |  ^  |  {  |  }  | DEL |     |
 // |     |  *  |  (  |  )  |  :  |     | |     |  '  |  [  |  ]  |  O  |     |
-// |     |-FUN-|  !  |  @  |  &  |     | |     |  #  |  <  |  >  | SFT |     |
+// |     |-FUN-|  !  |  @  |  &  |     | |     |  #  |  <  |  >  | NAV |     |
 //                   | CMD |_SYM_| SPACE | | RET | ESC | OPT |
                         bindings = <
    &none &kp BSPC  &kp BSLH &kp PRCNT &kp DLLR  &none &none &kp CARET &kp LBRC &kp RBRC &kp DEL  &none
    &none &kp STAR &kp LPAR &kp RPAR  &kp COLON &none &none &kp SQT   &kp LBKT &kp RBKT &kp LS(O)  &none
-   &none &mo FUN  &kp EXCL   &kp AT  &kp AMPS  &none &none &kp HASH &kp LT   &kp GT   &kp RSFT &none
+   &none &mo FUN  &kp EXCL   &kp AT  &kp AMPS  &none &none &kp HASH &kp LT   &kp GT   &trans &none
                              &trans &trans &kp SPACE &kp RET &kp ESC &trans
                         >;
                 };
