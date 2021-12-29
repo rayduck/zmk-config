@@ -73,7 +73,7 @@
         combo_bsp {
             timeout-ms = <50>;
             // SPC + ENT = BSP
-            key-positions = <36 37>;
+            key-positions = <38 39>;
             bindings = <&kp BSPC>;
         };
     };
