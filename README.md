@@ -1,4 +1,4 @@
 # zmk-config
 For Corne or any 36 key split
 
-![pnohty](https://user-images.githubusercontent.com/16619392/147670187-26be6ff4-f34f-457e-bab8-7b73e46b1f8f.png)
+![pnohty@4x](https://user-images.githubusercontent.com/16619392/147719566-470a2666-1ec7-42b0-8432-0fd20b6171ab.png)
