@@ -58,38 +58,38 @@
 // |  Q  |  W  |  F  |  P  |  B  | |  J  |  L  |  U  |  Y  |     |
 // |  A  |  R  |  S  |  T  |  G  | |  M  |  N  |  E  |  I  |  O  |
 // |  Z  |  X  |  C  |  D  |  V  | |  K  |  H  |  ,  |  .  |-FUN-|
-//                   |-SYM-| SPC | | RET |-NUM-|
+//                   |-SYM-| SPC | | SFT |-NUM-|
                         bindings = <
    &kp Q &kp W &kp F &kp P &kp B &kp J &kp L   &kp U     &kp Y   &none
    &kp A &kp R &kp S &kp T &kp G &kp M &kp N   &kp E     &kp I   &kp O
    &kp Z &kp X &kp C &kp D &kp V &kp K &kp H   &kp COMMA &kp DOT &mo FUN
-                   &mo SYM &kp SPACE &kp RET &mo NUM
+                   &mo SYM &kp SPACE &kp LSFT &mo NUM
                         >;
                 };
                 symbol_layer {
 // -----------------------------------------------------------------
 // |     |  \  |  %  |  $  |     | |     |  ^  |  {  |  }  |     |
-// |  *  |  (  |  )  |  :  |     | |     |  "  |  [  |  ]  |  ;  |
+// |  *  |  (  |  )  |  :  |     | |     |  '  |  [  |  ]  |  ;  |
 // |     |  `  |  @  |  &  |     | |     |  #  |  <  |  >  |-FUN-|
-//                   |_SYM_| SPC | | RET | ESC |
+//                   |_SYM_| SPC | | SFT | ESC |
                         bindings = <
    &none  &kp BSLH &kp PRCNT &kp DLLR  &none &none &kp CARET &kp LBRC &kp RBRC &none
-   &kp STAR &kp LPAR &kp RPAR  &kp COLON &none &none &kp DQT   &kp LBKT &kp RBKT &kp SEMI
+   &kp STAR &kp LPAR &kp RPAR  &kp COLON &none &none &kp SQT   &kp LBKT &kp RBKT &kp SEMI
    &mo FUN  &kp GRAVE   &kp AT  &kp AMPS  &none &none &kp HASH &kp LT   &kp GT   &kp DEL
-                             &trans &kp SPACE &kp RET &kp ESC
+                             &trans &kp SPACE &kp LSFT &kp ESC
                         >;
                 };
                 number_layer {
 // -----------------------------------------------------------------
 // |     |  4  |  5  |  6  |     | |     |  |  |  -  |  /  |     |
-// |  .  |  1  |  2  |  3  |     | |     |  '  |  _  |  =  |-NAV-|
+// |  .  |  1  |  2  |  3  |     | |     |  "  |  _  |  =  |-NAV-|
 // |  ~  |  7  |  8  |  9  |     | |     |  +  |  ?  |  !  |     |
-//                   |  0  | SPC | | RET |_NUM_|
+//                   |  0  | SPC | | SFT |_NUM_|
                         bindings = <
    &kp BSPC  &kp N4 &kp N5 &kp N6 &none &none &kp PIPE &kp MINUS &kp FSLH  &none
-   &kp DOT &kp N1 &kp N2 &kp N3 &none &none &kp SQT  &kp UNDER &kp EQUAL &mo NAV  
+   &kp DOT &kp N1 &kp N2 &kp N3 &none &none &kp DQT  &kp UNDER &kp EQUAL &mo NAV  
    &kp TILDE  &kp N7 &kp N8 &kp N9 &none &none &kp PLUS &kp QMARK  &kp EXCL    &none
-                 &kp N0 &kp SPACE &kp RET  &trans
+                 &kp N0 &kp SPACE &kp LSFT  &trans
                         >;
                 };
                 nav_layer {
@@ -97,7 +97,7 @@
 // |     |     |     |     |     | |     |     |     |     |     |
 // |     |     |     |     |     | | LFT | DWN | U P |RIGHT|_NAV_|
 // |     |     |     |     |     | | HOM |PG_DN|PG_UP| END |     |
-//                   |     | SPC | | RET |_NUM_|
+//                   |     | SPC | | SFT |_NUM_|
                         bindings = <
    &none &none &none &none &none &none    &none     &none     &none     &none 
    &none &none &none &none &none &kp LEFT &kp DOWN  &kp UP    &kp RIGHT &trans  
@@ -110,7 +110,7 @@
 // |     | F 6 | F 5 | F 4 | F10 | | <!> | <!> | <!> | <!> |     |
 // |CAPSL| F 3 | F 2 | F 1 | F11 | | BT2 |VMUTE|VOLDN|VOLUP| <!> |
 // |-!!!-| F 9 | F 8 | F 7 | F12 | | BT0 | BT1 |BRIDN|BRIUP|_FUN_|
-//                   |     | SPC | | RET |     |
+//                   |     | SPC | | SFT |     |
                         bindings = <
    &none &kp F6 &kp F5 &kp F4 &kp F10 &none &none &none &none &none
    &kp CAPS &kp F3   &kp F2 &kp F1 &kp F11 &bt BT_SEL 2 &kp K_MUTE &kp C_VOL_DN &kp C_VOL_UP &none
