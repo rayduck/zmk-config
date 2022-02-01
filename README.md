@@ -1,6 +1,6 @@
 # zmk-config
-For Corne or any 36 key split
+Currently using the ferris sweep (cradio) and pnohty 1.2
 
-![pnohty-1 1](https://user-images.githubusercontent.com/16619392/148263121-a45f02f1-ee4a-4727-9f70-a7e7243e5d28.png)
+![pnohty-1 2](https://user-images.githubusercontent.com/16619392/151906296-122d40a5-5672-436d-ae34-5348a25c61fd.png)
 
 See [Pnohty](https://github.com/rayduck/pnohty/) ;)
