@@ -35,13 +35,23 @@ compatible = "zmk,combos";
 ╰────────╮30 31│ │32 33╭────────╯
          ╰─────╯ ╰─────╯         */
 
+// trying out 2-row layout
+COMBO(R, &kp R, 1 11)
+COMBO(S, &kp S, 2 12)
+COMBO(T, &kp T, 3 13)
+COMBO(G, &kp G, 4 14)
+COMBO(M, &kp M, 5 15)
+COMBO(N, &kp N, 6 16)
+COMBO(E, &kp E, 7 17)
+COMBO(I, &kp I, 8 18)
+// functional keys
 COMBO(tab, &kp TAB, 1 2)
-COMBO(shift, &skq LSHFT, 7 8)
-COMBO(ctrl, &sk LCTL, 21 22)
-COMBO(backspace, &kp BSPC, 27 28)
+COMBO(backspace, &kp BSPC, 7 8)
+COMBO(ctrl, &sk LCTL, 11 12)
+COMBO(enter, &skq ENTER, 17 18)
 COMBO(cmd, &sk LCMD, 30 31)
 COMBO(opt, &sk LALT, 32 33)
 COMBO(q, &kp Q, 1 3)
-COMBO(z, &kp Z, 21 23)
+COMBO(z, &kp Z, 11 13)
 COMBO_LONG(capsword, &caps_word, 14 15)
 LAYER_COMBO(lock, &tog LCK, 20 29 30 33, NORMAL_LAYERS LOCK_LAYER)
