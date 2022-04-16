@@ -101,7 +101,7 @@
 #define HOLD_RESET &hold_reset 0 0
 #define HOLD_BT_CLR &hold_bt_clr 0 0
 #define HOLD_EMAIL_AT &hold_email_at 0 AT
-#define HOLD_GBP_DOLLAR &hold_gbp_dollar LA(&kp N3) DOLLAR
+#define HOLD_GBP_DOLLAR &hold_gbp_dollar LA(N3) DOLLAR
 
 /*           34 Keys
 ╭──────────────╮ ╭──────────────╮
