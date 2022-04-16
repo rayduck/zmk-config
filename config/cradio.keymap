@@ -15,16 +15,14 @@
 #define NUM 2
 #define NAV 3
 #define FUN 4
-#define DAN 5
-#define LCK 6
+
+#define HYPER LG(LS(LA(LCTRL)))
 
 &caps_word {
    continue-list = <UNDERSCORE MINUS BACKSPACE>;
 };
 
-
 / {
-
     combos {
         #include "combos.dtsi"    
     };
@@ -55,93 +53,72 @@
                 compatible = "zmk,keymap";
                 colemak_layer {
 // -----------------------------------------------------------------
-// |  Q  |  W  |  F  |  P  |  B  | |  J  |  L  |  U  |  Y  |     |
+// |     |  W  |  F  |  P  |     | |     |  L  |  U  |  Y  |     |
 // |  A  |  R  |  S  |  T  |  G  | |  M  |  N  |  E  |  I  |  O  |
-// |  Z  |  X  |  C  |  D  |  V  | |  K  |  H  |  ,  |  .  |-FUN-|
+// |  Z  |  X  |  C  |  D  |  B  | |  K  |  H  |  ,  |  .  |-NAV-|
 //                   |-SYM-| SPC | | SFT |-NUM-|
                         bindings = <
-   &kp Q &kp W &kp F &kp P &kp B &kp J &kp L   &kp U     &kp Y   &none
+   &none &kp W &kp F &kp P &none &none &kp L   &kp U     &kp Y   &none
    &kp A &kp R &kp S &kp T &kp G &kp M &kp N   &kp E     &kp I   &kp O
-   &kp Z &kp X &kp C &kp D &kp V &kp K &kp H   &kp COMMA &kp DOT &mo FUN
-                   &mo SYM &kp SPACE &kp LSFT &mo NUM
+   &kp Z &kp X &kp C &kp D &kp B &kp K &kp H   &kp COMMA &kp DOT &sl NAV
+                   &sl SYM &kp SPACE &kp LSFT &sl NUM
                         >;
                 };
                 symbol_layer {
 // -----------------------------------------------------------------
-// |     |  \  |  %  |  $  |     | |     |  ^  |  {  |  }  |     |
-// |  *  |  (  |  )  |  :  |     | |     |  '  |  [  |  ]  |  ;  |
-// |     |  `  |  @  |  &  |     | |     |  #  |  <  |  >  |-FUN-|
-//                   |_SYM_| SPC | | SFT | ESC |
+// |     |  {  |  *  |  }  |     | |     |  <  |  ^  |  >  |     |
+// |  \  |  (  |  :  |  )  |     | |     |  [  |  '  |  ]  |  `  |
+// | HYP |     |  ;  |  @  |     | |     |  #  |  "  |  &  |     |
+//                   |_SYM_|     | | SFT | ESC |
                         bindings = <
-   &none  &kp BSLH &kp PRCNT &kp DLLR  &none &none &kp CARET &kp LBRC &kp RBRC &none
-   &kp STAR &kp LPAR &kp RPAR  &kp COLON &none &none &kp SQT   &kp LBKT &kp RBKT &kp SEMI
-   &mo FUN  &kp GRAVE   &kp AT  &kp AMPS  &none &none &kp HASH &kp LT   &kp GT   &kp DEL
+   &none  &kp LBRC &kp STAR &kp RBRC  &none &none &kp LT &kp CARET &kp GT &none
+   &kp BSLH &kp LPAR &kp COLON &kp RPAR  &none &none &kp LBKT &kp SQT &kp RBKT &none
+   &sk HYPER  &none   &kp SEMI  &kp AT  &none &none &kp HASH &kp DQT   &kp AMPS   &none
                              &trans &kp SPACE &kp LSFT &kp ESC
                         >;
                 };
                 number_layer {
 // -----------------------------------------------------------------
-// |     |  4  |  5  |  6  |     | |     |  |  |  -  |  /  |     |
-// |  .  |  1  |  2  |  3  |     | |     |  "  |  _  |  =  |-NAV-|
-// |  ~  |  7  |  8  |  9  |     | |     |  +  |  ?  |  !  |     |
-//                   |  0  | SPC | | SFT |_NUM_|
+// |     |  4  |  5  |  6  |     | |     |  |  |  ~  |  *  |     |
+// |  .  |  1  |  2  |  3  |     | |     |  +  |  -  |  =  |  /  |
+// |  ,  |  7  |  8  |  9  |     | |     |  $ £|  _  |  %  |-FUN-|
+//                   |  0  | SPC | |     |_NUM_|
                         bindings = <
-   &kp BSPC  &kp N4 &kp N5 &kp N6 &none &none &kp PIPE &kp MINUS &kp FSLH  &none
-   &kp DOT &kp N1 &kp N2 &kp N3 &none &none &kp DQT  &kp UNDER &kp EQUAL &mo NAV  
-   &kp TILDE  &kp N7 &kp N8 &kp N9 &none &none &kp PLUS &kp QMARK  &kp EXCL    &none
+   &none  &kp N4 &kp N5 &kp N6 &none &none &kp PIPE &kp TILDE &kp STAR  &none
+   &kp DOT &kp N1 &kp N2 &kp N3 &none &none &kp PLUS  &kp MINUS &kp EQUAL &kp FSLH
+   &kp COMMA  &kp N7 &kp N8 &kp N9 &none &none &kp DLLR &kp UNDER  &kp PRCNT    &sl FUN
                  &kp N0 &kp SPACE &kp LSFT  &trans
                         >;
                 };
                 nav_layer {
+// VHINT - Vimac hint mode and exits nav layer
+// SCRLL - Vimac scroll mode and stays in nav layer
+// FOCUS - move focus across open windows
+// THROW - move windows into different workspaces
 // -----------------------------------------------------------------
-// |     |     |     |     |     | |     |     |     |     |     |
-// |     |     |     |     |     | | LFT | DWN | U P |RIGHT|_NAV_|
-// |     |     |     |     |     | | HOM |PG_DN|PG_UP| END |     |
-//                   |     | SPC | | SFT |_NUM_|
+// |     | W 4 | W 5 | W 6 |     | |     |A-CLK|VHINT| CLK |     |
+// |THROW| W 1 | W 2 | W 3 |     | | LFT | DWN | U P |RIGHT| DEL |
+// |NAVLK| W 7 | W 8 | W 9 |     | |     | S 1 | S 2 | S 3 |_NAV_|
+//                   |FOCUS| SPC | | SFT |SCRLL|
                         bindings = <
    &none &none &none &none &none &none    &none     &none     &none     &none 
    &none &none &none &none &none &kp LEFT &kp DOWN  &kp UP    &kp RIGHT &trans  
-   &none &none &none &none &none &kp HOME &kp PG_DN &kp PG_UP &kp END   &none 
+   &tog NAV &none &none &none &none &none &none &none &none   &none 
                          &none &trans &trans &trans
                         >;
                 };
                 fun_layer {
 // -----------------------------------------------------------------
-// |     | F 6 | F 5 | F 4 | F10 | | <!> | <!> | <!> | <!> |     |
-// |CAPSL| F 3 | F 2 | F 1 | F11 | | BT2 |VMUTE|VOLDN|VOLUP| <!> |
-// |-!!!-| F 9 | F 8 | F 7 | F12 | | BT0 | BT1 |BRIDN|BRIUP|_FUN_|
-//                   |     | SPC | | SFT |     |
+// |     | F 4 | F 5 | F 6 |     | |     | BT0 | BT1 | BT2 |     |
+// | F11 | F 1 | F 2 | F 3 |FLASH| |FLASH|VMUTE|VOLDN|VOLUP|POWER|
+// | F12 | F 7 | F 8 | F 9 |RESET| |RESET|BTCLR|BRIDN|BRIUP|_FUN_|
+//                   | F10 | SPC | | SFT |_NUM_|
                         bindings = <
-   &none &kp F6 &kp F5 &kp F4 &kp F10 &none &none &none &none &none
-   &kp CAPS &kp F3   &kp F2 &kp F1 &kp F11 &bt BT_SEL 2 &kp K_MUTE &kp C_VOL_DN &kp C_VOL_UP &none
-   &mo DAN &kp F9 &kp F8 &kp F7  &kp F12 &bt BT_SEL 0  &bt BT_SEL 1 &kp C_BRI_DN &kp C_BRI_UP &trans
-                         &none &trans &trans &none 
+   &none &kp F4 &kp F5 &kp F6 &none &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &none
+   &kp F11 &kp F1 &kp F2 &kp F3 &bootloader &bootloader &kp K_MUTE &kp C_VOL_DN &kp C_VOL_UP &kp K_PWR
+   &kp F12 &kp F7 &kp F8 &kp F9  &reset &reset &bt BT_CLR &kp C_BRI_DN &kp C_BRI_UP &trans
+                         &kp F10 &trans &trans &trans 
                         >;
-                };
-                danger_layer {
-// -----------------------------------------------------------------
-// |     |     |     |     |     | |BTCLR| BLE | USB |RESET|     |
-// |     |     |     |     |     | |     |     |     |     |BOOTL|
-// |_!!!_|     |     |     |     | |     |     |     |     |_FUN_|
-//                   |     |     | |     |     |
-                    // impactful buttons
-                    // Bluetooth clear, reset, chaning BLE/USB preference, bootloader
-                    bindings = <
-&none &none &none &none &none &bt BT_CLR  &out OUT_BLE &out OUT_USB &reset &none
-&none &none &none &none &none &none &none &none &none &bootloader
-&trans &none &none &none &none &none &none &none &none &trans
-&none &none &none &none
-                    >;
-                };
-                lock_layer {
-                    // only way out is the lock combo
-                    // other combos are disabled too
-                    bindings = <
-&none &none &none &none &none &none &none &none &none &none 
-&none &none &none &none &none &none &none &none &none &none 
-&none &none &none &none &none &none &none &none &none &none 
-&none &none &none &none 
-                    >;
                 };
         };
 };

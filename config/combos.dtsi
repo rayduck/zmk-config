@@ -1,30 +1,12 @@
-// indebted and with much reference to dxmh's zmk-config
-
 compatible = "zmk,combos";
 #define LONG_TIMEOUT_MS 100
-#define NORMAL_LAYERS 0 1 2 3 4 5
-#define LOCK_LAYER 6
+#define ALL_LAYERS 0 1 2 3 4
 
 #define COMBO(NAME, BINDINGS, KEYPOS) \
   combo_##NAME { \
     bindings = <BINDINGS>; \
     key-positions = <KEYPOS>; \
-    layers = <NORMAL_LAYERS>; \
-  };
-
-#define COMBO_LONG(NAME, BINDINGS, KEYPOS) \
-  combo_##NAME { \
-    bindings = <BINDINGS>; \
-    key-positions = <KEYPOS>; \
-    layers = <NORMAL_LAYERS>; \
-    timeout-ms = <LONG_TIMEOUT_MS>; \
-  };
-
-#define LAYER_COMBO(NAME, BINDINGS, KEYPOS, LAYERS) \
-  combo_##NAME { \
-    bindings = <BINDINGS>; \
-    key-positions = <KEYPOS>; \
-    layers = <LAYERS>; \
+    layers = <ALL_LAYERS>; \
   };
 
 /*           34 Keys
@@ -35,13 +17,13 @@ compatible = "zmk,combos";
 ╰────────╮30 31│ │32 33╭────────╯
          ╰─────╯ ╰─────╯         */
 
-COMBO(tab, &kp TAB, 1 2)
+COMBO(caps_word, &caps_word, 6 7)
 COMBO(backspace, &kp BSPC, 7 8)
-COMBO(ctrl, &sk LCTL, 21 22)
+COMBO(ctrl, &sk LCTL, 26 27)
 COMBO(enter, &kp RET, 27 28)
 COMBO(cmd, &sk LCMD, 30 31)
 COMBO(opt, &sk LALT, 32 33)
-COMBO(q, &kp Q, 1 3)
-COMBO(z, &kp Z, 21 23)
-COMBO_LONG(capsword, &caps_word, 14 15)
-LAYER_COMBO(lock, &tog LCK, 20 29 30 33, NORMAL_LAYERS LOCK_LAYER)
+COMBO(TAB, &kp TAB, 1 2)
+COMBO(q, &kp Q, 2 3)
+COMBO(j, &kp J, 21 22)
+COMBO(v, &kp V, 22 23)
