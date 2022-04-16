@@ -36,8 +36,72 @@
             release-after-ms = <1000>;
             quick-release;
         };
+        hold_bootloader: hold_bootloader {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_BOOTLOADER";
+            #binding-cells = <2>;
+            tapping-term-ms = <1000>;
+            quick-tap-ms = <0>;
+            flavor = "balanced";
+            bindings = <&bootloader>, <&none>;
+        };
+        hold_reset: hold_reset {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_RESET";
+            #binding-cells = <2>;
+            tapping-term-ms = <1000>;
+            quick-tap-ms = <0>;
+            flavor = "balanced";
+            bindings = <&reset>, <&none>;
+        };
+        hold_bt_clr: hold_bt_clr {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_BT_CLR";
+            #binding-cells = <2>;
+            tapping-term-ms = <5000>;
+            quick-tap-ms = <0>;
+            flavor = "balanced";
+            bindings = <&macro_bt_clr>, <&none>;
+        };
+        hold_email_at: hold_email_at {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_EMAIL_AT";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
+            flavor = "balanced";
+            bindings = <&macro_email>, <&kp>;
+        };
+        hold_gbp_dollar: hold_gbp_dollar {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_GBP_DOLLAR";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
+        };
+    };
+    macros {
+        ZMK_MACRO(macro_email,
+        wait-ms = <30>;
+        tap-ms = <40>;
+        bindings = <&kp R &kp U &kp I &kp D &kp A>
+                   , <&kp AT>
+                   , <&kp D &kp I &kp N &kp G &kp A &kp N &kp S &kp I>
+                   , <&kp DOT &kp C &kp H>;)
+        ZMK_MACRO(macro_bt_clr,
+        wait-ms = <30>;
+        tap-ms = <40>;
+        bindings = <&bt BT_CLR>;)
     };
 };
+
+#define HOLD_BOOTLOADER &hold_bootloader 0 0
+#define HOLD_RESET &hold_reset 0 0
+#define HOLD_BT_CLR &hold_bt_clr 0 0
+#define HOLD_EMAIL_AT &hold_email_at 0 AT
+#define HOLD_GBP_DOLLAR &hold_gbp_dollar LA(&kp N3) DOLLAR
 
 /*           34 Keys
 ╭──────────────╮ ╭──────────────╮
@@ -72,8 +136,8 @@
 //                   |_SYM_|     | | SFT | ESC |
                         bindings = <
    &none  &kp LBRC &kp STAR &kp RBRC  &none &none &kp LT &kp CARET &kp GT &none
-   &kp BSLH &kp LPAR &kp COLON &kp RPAR  &none &none &kp LBKT &kp SQT &kp RBKT &none
-   &sk HYPER  &none   &kp SEMI  &kp AT  &none &none &kp HASH &kp DQT   &kp AMPS   &none
+   &kp BSLH &kp LPAR &kp COLON &kp RPAR  &none &none &kp LBKT &kp SQT &kp RBKT &kp TILDE
+   &sk HYPER  &none   &kp SEMI  HOLD_EMAIL_AT  &none &none &kp HASH &kp DQT   &kp AMPS   &none
                              &trans &kp SPACE &kp LSFT &kp ESC
                         >;
                 };
@@ -86,7 +150,7 @@
                         bindings = <
    &none  &kp N4 &kp N5 &kp N6 &none &none &kp PIPE &kp TILDE &kp STAR  &none
    &kp DOT &kp N1 &kp N2 &kp N3 &none &none &kp PLUS  &kp MINUS &kp EQUAL &kp FSLH
-   &kp COMMA  &kp N7 &kp N8 &kp N9 &none &none &kp DLLR &kp UNDER  &kp PRCNT    &sl FUN
+   &kp COMMA  &kp N7 &kp N8 &kp N9 &none &none HOLD_GBP_DOLLAR &kp UNDER  &kp PRCNT    &sl FUN
                  &kp N0 &kp SPACE &kp LSFT  &trans
                         >;
                 };
@@ -115,8 +179,8 @@
 //                   | F10 | SPC | | SFT |_NUM_|
                         bindings = <
    &none &kp F4 &kp F5 &kp F6 &none &none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &none
-   &kp F11 &kp F1 &kp F2 &kp F3 &bootloader &bootloader &kp K_MUTE &kp C_VOL_DN &kp C_VOL_UP &kp K_PWR
-   &kp F12 &kp F7 &kp F8 &kp F9  &reset &reset &bt BT_CLR &kp C_BRI_DN &kp C_BRI_UP &trans
+   &kp F11 &kp F1 &kp F2 &kp F3 HOLD_BOOTLOADER HOLD_BOOTLOADER &kp K_MUTE &kp C_VOL_DN &kp C_VOL_UP &kp K_PWR
+   &kp F12 &kp F7 &kp F8 &kp F9  HOLD_RESET HOLD_RESET HOLD_BT_CLR &kp C_BRI_DN &kp C_BRI_UP &trans
                          &kp F10 &trans &trans &trans 
                         >;
                 };
