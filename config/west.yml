@@ -2,10 +2,12 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    - name: marcoster
+      url-base: https://github.com/marcoster
   projects:
     - name: zmk
-      remote: zmkfirmware
-      revision: main
+      remote: marcoster
+      revision: behavior-key-tap
       import: app/west.yml
   self:
     path: config
