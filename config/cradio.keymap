@@ -150,8 +150,8 @@
 //                   |_SYM_|     | | SFT | ESC |
                         bindings = <
    &none  &kt LBRC &kt STAR &kt RBRC  &none &none &kt LT &kt CARET &kt GT &none
-   &kt BSLH &kt LPAR &kt COLON &kt RPAR  &none &none &kt LBKT &kt SQT &kt RBKT &kt TILDE
-   &sk HYPER  &none   &kt SEMI  HOLD_EMAIL_AT  &none &none &kt HASH &kt DQT   &kt AMPS   &none
+   &kp BSLH &kt LPAR &kt COLON &kt RPAR  &none &none &kp LBKT &kp SQT &kp RBKT &kp GRAVE
+   &sk HYPER  &none   &kp SEMI  HOLD_EMAIL_AT  &none &none &kt HASH &kt DQT   &kt AMPS   &none
                              &trans &kp SPACE &kp LSFT &kp ESC
                         >;
                 };
@@ -163,7 +163,7 @@
 //                   |  0  | SPC | |     |_NUM_|
                         bindings = <
    &none  &kp N4 &kp N5 &kp N6 &none &none &kt PIPE &kt TILDE &kt STAR  &none
-   &kp DOT &kp N1 &kp N2 &kp N3 &none &none &kt PLUS  &kt MINUS &kt EQUAL &kt FSLH
+   &kp DOT &kp N1 &kp N2 &kp N3 &none &none &kt PLUS  &kp MINUS &kp EQUAL &kp FSLH
    &kp COMMA  &kp N7 &kp N8 &kp N9 &none &none HOLD_GBP_DOLLAR &kt UNDER  &kt PRCNT    &sl FUN
                  &kp N0 &kp SPACE &kp LSFT  &trans
                         >;
