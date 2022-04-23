@@ -138,7 +138,7 @@
                         bindings = <
    &none &kp W &kp F &kp P &none &none &kp L   &kp U     &kp Y   &none
    &kp A &kp R &kp S &kp T &kp G &kp M &kp N   &kp E     &kp I   &kp O
-   &kp Z &kp X &kp C &kp D &kp B &kp K &kp H   &kp COMMA &kp DOT &sl NAV
+   &kp Z &kp X &kp C &kp D &kp B &kp K &kp H   &comma_qmark &dot_excl &sl NAV
                    &sl SYM &kp SPACE &kp LSFT &sl NUM
                         >;
                 };
