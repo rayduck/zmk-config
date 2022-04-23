@@ -81,6 +81,20 @@
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
         };
+        comma_qmark: comma_qmark {
+            compatible = "zmk,behavior-mod-morph";
+            label = "COMMA_QMARK";
+            #binding-cells = <0>;
+            bindings = <&kp COMMA>, <&kp QMARK>;
+            mods = <(MOD_LSFT)>;
+        };
+        dot_excl: dot_excl {
+            compatible = "zmk,behavior-mod-morph";
+            label = "DOT_EXCL";
+            #binding-cells = <0>;
+            bindings = <&kp DOT>, <&kp EXCL>;
+            mods = <(MOD_LSFT)>;
+        };
     };
     macros {
         ZMK_MACRO(macro_email,
