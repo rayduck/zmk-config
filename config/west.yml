@@ -7,7 +7,7 @@ manifest:
   projects:
     - name: zmk
       remote: marcoster
-      revision: behavior-key-tap
+      revision: marcoster/behavior-key-tap
       import: app/west.yml
   self:
     path: config
